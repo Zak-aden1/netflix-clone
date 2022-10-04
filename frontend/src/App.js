@@ -1,8 +1,10 @@
 import Home from "./pages/Home";
 
+import './app.scss'
+
 const App = ()  => {
   return (
-    <div>
+    <div className="home">
       <Home />
     </div>
   );
