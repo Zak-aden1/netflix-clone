@@ -1,6 +1,6 @@
 import React from 'react'
 import Featured from '../../components/Featured'
-import List from '../../components/LIst'
+import List from '../../components/List'
 import Navbar from '../../components/Navbar'
 
 import "./home.scss"
