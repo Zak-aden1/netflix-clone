@@ -5,7 +5,7 @@ import './styles.scss'
 const ListCard = () => {
   return (
     <div className='card'>
-
+      item
     </div>
   )
 }
