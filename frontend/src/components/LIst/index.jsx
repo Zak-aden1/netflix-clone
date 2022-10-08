@@ -7,7 +7,7 @@ import { useRef } from 'react'
 
 const List = () => {
   const [isMoved, setIsMoved] = useState(false)
-  const abc = [1, 2, 3, 4, 5, ,6 ,7 ,8, 9, 0, 2, 34, 4, 4, 4, 3, 4,5 ]
+  const abc = [0, 1, 2, 3, 4, 5, 6, 7 ,8 ,9, 10, 11, 12, 13, 14, 15, 16, 17,18 ]
 
   const listRef = useRef()
 
@@ -27,8 +27,8 @@ const List = () => {
       <div className='wrapper'>
         <ArrowBackIosNewOutlined style={{display: !isMoved && 'none'}} className='slider left' onClick={() => handleClick('left')}/>
         <div className='container' ref={listRef}>
-          {abc.map(() => (
-            <ListCard/>
+          {abc.map((index) => (
+            <ListCard index={index}/>
           ))}
           <ListCard/>
           <ListCard/>
