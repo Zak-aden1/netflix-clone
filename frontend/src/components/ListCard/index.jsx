@@ -23,10 +23,12 @@ const ListCard = ({index}) => {
       <>
         <video src={trailer} autoPlay={true} loop />
         <div className='itemInfo'>
-          <PlayArrow/>
-          <Add/>
-          <ThumbUpOffAltIcon/>
-          <ThumbDownOffAltIcon/>
+          <div className='icons'>
+            <PlayArrow className='icon'/>
+            <Add className='icon'/>
+            <ThumbUpOffAltIcon className='icon'/>
+            <ThumbDownOffAltIcon className='icon'/>
+          </div>
           <div className='itemInfoTop'>
             <span>1 hour 14 mins</span>
             <span className='limit'>+18</span>
@@ -36,7 +38,7 @@ const ListCard = ({index}) => {
             Lorem ipsum dolor sit amet 
             consectetur adipisicing elit. Consequuntur accusantium magni natus nobis ea, iusto corporis quae corrupti molestias voluptatibus?
           </div>
-          <div className='genre'>acttion</div>
+          <div className='genre'>Action</div>
         </div>
       </>
       )}
