@@ -23,7 +23,7 @@ const Register = () => {
       <div className='top'>
         <div className="wrapper">
           <img className='logo' alt='netflix logo'  src='https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg'/>
-          <button className='login'>Sign In</button>
+          <button className='loginButton'>Sign In</button>
         </div>
       </div>
 
