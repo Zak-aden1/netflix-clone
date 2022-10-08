@@ -1,15 +1,21 @@
-import Home from "./pages/Home";
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
-import './app.scss'
+import Home from "./pages/Home";
 import Watch from "./pages/Watch";
 import Register from "./pages/Register";
 
+import './app.scss'
+
 const App = ()  => {
   return (
-    // <div className="home">
-      /* <Home /> */
-      <Register />
-    /* </div> */
+    <BrowserRouter>
+      <div className="home">
+        <Routes>
+          <Route path="/" element={<Home />}/>
+          <Route path="/register" element={ <Register />}/>
+        </Routes>
+      </div> 
+    </BrowserRouter>
   );
 }
 
