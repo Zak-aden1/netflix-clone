@@ -8,9 +8,6 @@ const app = express();
 // middleware
 app.use(express.json())
 
-app.use('/', (req, res) => {
-  res.send('working')
-})
 
 app.use('/api/auth', authRouter)
 

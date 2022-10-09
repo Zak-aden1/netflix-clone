@@ -1,17 +1,7 @@
 const router = require('express').Router()
-
-const User = require('../models/User');
+const { register } = require('../controllers/Auth')
 
 // register
-router.post('/', async (req, res) => {
-  res.send('loll')
-  // User.create
-
-  try {
-    const user = User.create(req.body)    
-  } catch (error) {
-    res.send('err')
-  }
-})
+router.post('/register', register)
 
 module.exports = router
