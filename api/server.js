@@ -1,12 +1,18 @@
 const express = require('express')
 require('dotenv').config();
 const mongoose = require('mongoose')
+const authRouter = require('./routes/Auth')
 
 const app = express();
+
+// middleware
+app.use(express.json())
 
 app.use('/', (req, res) => {
   res.send('working')
 })
+
+app.use('/api/auth', authRouter)
 
 const port = process.env.PORT
 
