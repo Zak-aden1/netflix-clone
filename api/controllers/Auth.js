@@ -21,6 +21,27 @@ const register = async (req, res) => {
   }
 }
 
+const login = async (req, res) => {
+  const { email, password: userPassword } = req.body;
+
+  try {
+    const user = await User.findOne({email})
+    if(!user) return res.status(401).json({error:"Wrong email"})
+
+    const bytes  = CryptoJS.AES.decrypt(user.password, process.env.SECRET);
+    const originalPassword = bytes.toString(CryptoJS.enc.Utf8); 
+
+    if(originalPassword !== userPassword) return res.status(401).json({error:"Wrong password"})
+
+    const { password, ...info } = user._doc
+
+    res.status(200).json(info)
+  } catch (error) {
+    res.status(500).json({error})
+  }
+}
+
 module.exports = {
-  register
+  register,
+  login
 }
