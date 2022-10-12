@@ -33,9 +33,11 @@ const login = async (req, res) => {
 
     if(originalPassword !== userPassword) return res.status(401).json({error:"Wrong password"})
 
+    const token = jwt.sign({id: user._id, isAdmin: user.isAdmin}, process.env.SECRET, {expiresIn: '3d'})
+
     const { password, ...info } = user._doc
 
-    res.status(200).json(info)
+    res.status(200).json({...info, token})
   } catch (error) {
     res.status(500).json({error})
   }
