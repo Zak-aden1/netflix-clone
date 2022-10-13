@@ -2,6 +2,16 @@
 const User = require('../models/User')
 const CryptoJS = require("crypto-js");
 
+const getUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id)
+    if(!user) return res.status(404).json({error: "account not found"})
+    res.status(200).json(user)
+  } catch (error) {
+    res.status(500).json({error})
+  }
+}
+
 const updateUser = async (req, res) => {
   if(req.user.id === req.params.id || req.user.isAdmin) {
    if(req.body.password) {
@@ -32,5 +42,6 @@ const delUser = async (req, res) => {
 
 module.exports = {
   updateUser,
-  delUser
+  delUser,
+  getUser
 }
