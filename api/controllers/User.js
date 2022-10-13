@@ -9,7 +9,7 @@ const updateUser = async (req, res) => {
      req.body.password = password
    }
    try {
-     const updatedUser = await User.findByIdAndUpdate(req.params.id, {...req.body})
+     const updatedUser = await User.findByIdAndUpdate(req.params.id, {...req.body}, {new: true})
      return res.status(200).json(updatedUser)
    } catch (error) {
      res.status(500).json({error})
@@ -19,7 +19,6 @@ const updateUser = async (req, res) => {
 };
 
 const delUser = async (req, res) => {
-  console.log('req', req.user);
   if(req.user.isAdmin) {
     try {
       const user = await User.findByIdAndDelete(req.params.id)
