@@ -18,6 +18,20 @@ const updateUser = async (req, res) => {
   } else return res.status(403).json({error: "Forbidden to change user details"})
 };
 
+const delUser = async (req, res) => {
+  console.log('req', req.user);
+  if(req.user.isAdmin) {
+    try {
+      const user = await User.findByIdAndDelete(req.params.id)
+      if(!user) return res.status(404).json({error: "unable to find user"})
+      return res.status(user).json(user)
+    } catch (error) {
+      res.status(500).json(error)
+    }
+  } else return res.status(403).json({error: "only admins are able to delete"})
+}
+
 module.exports = {
-  updateUser
+  updateUser,
+  delUser
 }

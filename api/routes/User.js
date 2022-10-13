@@ -2,7 +2,7 @@ const Router = require('express').Router();
 const User = require('../models/User')
 const CryptoJS = require("crypto-js");
 const verifyToken = require('../middleware/verifyToken')
-const { updateUser } = require('../controllers/User')
+const { updateUser, delUser } = require('../controllers/User')
 
 
 // get
@@ -16,7 +16,7 @@ Router.get('/', verifyToken, (req, res) => {
 Router.put('/:id', verifyToken, updateUser)
 
 // del
-
+Router.delete('/:id', verifyToken, delUser)
 // get all
 
 // get user stats
