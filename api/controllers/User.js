@@ -6,7 +6,8 @@ const getUser = async (req, res) => {
   try {
     const user = await User.findById(req.params.id)
     if(!user) return res.status(404).json({error: "account not found"})
-    res.status(200).json(user)
+    const { password, ...rest } = user._doc
+    res.status(200).json(rest)
   } catch (error) {
     res.status(500).json({error})
   }
