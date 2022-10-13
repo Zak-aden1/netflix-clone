@@ -13,6 +13,15 @@ const getUser = async (req, res) => {
   }
 }
 
+const getAllUser = async (req, res) => {
+  const query = req.query.new;
+  if(req.user.isAdmin) {
+    const users = query ? await User.find().sort({_id: -1}).limit(10) : await User.find();
+    if(!users) return res.status(404).json({error: "no users found"})
+    res.status(200).json(users)
+  } else return res.status(403).json({error: "only Admin can see all users"})
+}
+
 const updateUser = async (req, res) => {
   if(req.user.id === req.params.id || req.user.isAdmin) {
    if(req.body.password) {
@@ -44,5 +53,6 @@ const delUser = async (req, res) => {
 module.exports = {
   updateUser,
   delUser,
-  getUser
+  getUser,
+  getAllUser
 }
